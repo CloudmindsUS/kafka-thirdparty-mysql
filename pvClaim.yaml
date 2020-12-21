@@ -1,11 +1,17 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: kafka-thirdparty-mysql-pv-claim
+  name: mysql-data
 spec:
-  storageClassName: manual
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: 30Gi
+  storageClassName: nfs-client
+status:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 30Gi
+  phase: Bound

@@ -1,38 +1,9 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: kafka-thirdparty-mysql-configuration
-  namespace: kafka-thirdparty
-  selfLink: /api/v1/namespaces/kafka-thirdparty/configmaps/kafka-thirdparty-mysql-configuration
-  uid: 
-  resourceVersion: ''
-  creationTimestamp: ''
+  name: mysql-conf
   labels:
     app.kubernetes.io/instance: gke-us-prod.gke.kafka-thirdparty
-  annotations:
-    kubectl.kubernetes.io/last-applied-configuration: >
-      {"apiVersion":"v1","data":{"mysql.cnf":"[mysqld]\nserver-id=1\nlog-bin =
-      mysql-master-bin\nmax_binlog_size = 100M\nexpire_logs_days =
-      7\nsync_binlog = 1\ninnodb_flush_log_at_trx_commit = 1\nrelay_log =
-      msyql-relay-bin\nmax_relay_log_size = 100M\nrelay_log_purge =
-      on\ntmp_table_size = 16777216\nmax_heap_table_size =
-      16777216\nwait_timeout = 7200\ninteractive_timeout = 7200\nmax_connections
-      = 3000\ncharacter-set-server = utf8\ndatadir =
-      /var/lib/mysql\nsymbolic_links = 0\ninnodb_use_native_aio =
-      0\nskip-host-cache\nslow_query_log = ON\nslow_query_log_file =
-      /var/log/mysql/slow.log\nlong_query_time =
-      5\ncharacter-set-server=utf8\nenforce_gtid_consistency = on\ngtid_mode =
-      on","slave.cnf":"[mysqld]\nserver-id=2\nlog-bin =
-      mysql-slave-bin\nmax_binlog_size = 100M\nexpire_logs_days = 7\nsync_binlog
-      = 1\ninnodb_flush_log_at_trx_commit = 1\nslave_skip_errors =
-      1396\nrelay_log = msyql-relay-bin\nmax_relay_log_size =
-      100M\nrelay_log_purge = on\ntmp_table_size = 16777216\nmax_heap_table_size
-      = 16777216\nwait_timeout = 7200\ninteractive_timeout =
-      7200\nmax_connections = 3000\ncharacter-set-server = utf8\ndatadir =
-      /var/lib/mysql\nsymbolic_links = 0\ninnodb_use_native_aio =
-      0\nskip-host-cache\nenforce_gtid_consistency = on\ngtid_mode =
-      on"},"kind":"ConfigMap","metadata":{"annotations":{"strategy.spinnaker.io/versioned":"false"},"labels":{"app.kubernetes.io/instance":"gke-us-prod.gke.fras.cloud-mysql"},"name":"fras-mysql-configuration","namespace":"crss-fras-v3"}}
-    strategy.spinnaker.io/versioned: 'false'
 data:
   mysql.cnf: |-
     [mysqld]
@@ -59,29 +30,5 @@ data:
     slow_query_log_file = /var/log/mysql/slow.log
     long_query_time = 5
     character-set-server=utf8
-    enforce_gtid_consistency = on
-    gtid_mode = on
-  slave.cnf: |-
-    [mysqld]
-    server-id=2
-    log-bin = mysql-slave-bin
-    max_binlog_size = 100M
-    expire_logs_days = 7
-    sync_binlog = 1
-    innodb_flush_log_at_trx_commit = 1
-    slave_skip_errors = 1396
-    relay_log = msyql-relay-bin
-    max_relay_log_size = 100M
-    relay_log_purge = on
-    tmp_table_size = 16777216
-    max_heap_table_size = 16777216
-    wait_timeout = 7200
-    interactive_timeout = 7200
-    max_connections = 3000
-    character-set-server = utf8
-    datadir = /var/lib/mysql
-    symbolic_links = 0
-    innodb_use_native_aio = 0
-    skip-host-cache
     enforce_gtid_consistency = on
     gtid_mode = on

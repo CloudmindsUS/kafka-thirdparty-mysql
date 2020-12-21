@@ -17,7 +17,7 @@ spec:
       - image: mysql:8.0.17
         name: mysql
         env:
-            MYSQL_ROOT_PASSWORD: 111111
+            MYSQL_ROOT_PASSWORD: cloud1688
             MYSQL_DATABASE: contacts
         - name: MYSQL_ROOT_PASSWORD
           value: password
@@ -25,9 +25,21 @@ spec:
         - containerPort: 3306
           name: kafka-thirdparty-mysql
         volumeMounts:
-        - name: kafka-thirdparty-mysql-persistent-storage
+        - name: mysql-data
           mountPath: /var/lib/mysql
+        - name: mysql-conf
+          mountPath: /etc/mysql/mysql.conf.d
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
       volumes:
-      - name: kafka-thirdparty-mysql-persistent-storage
+      - name: mysql-data
         persistentVolumeClaim:
-          claimName: kafka-thirdparty-mysql-pv-claim
+          claimName: mysql-data
+      - configMap:
+          defaultMode: 420
+          name: mysql-conf
+          optional: false
+        name: mysql-conf

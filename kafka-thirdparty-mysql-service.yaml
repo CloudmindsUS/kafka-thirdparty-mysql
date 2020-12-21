@@ -4,7 +4,13 @@ metadata:
   name: kafka-thirdparty-mysql
 spec:
   ports:
-  - port: 3306
+  - name: tcp-3306
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
   selector:
-    app: mysql
-  clusterIP: None
+    app: kafka-thirdparty-mysql
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
