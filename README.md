@@ -1,0 +1,1 @@
+# kafka-thirdparty-mysql
