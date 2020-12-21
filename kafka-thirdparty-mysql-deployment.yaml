@@ -17,13 +17,13 @@ spec:
       - image: mysql:8.0.17
         name: mysql
         env:
-            MYSQL_ROOT_PASSWORD: cloud1688
-            MYSQL_DATABASE: contacts
-        - name: MYSQL_ROOT_PASSWORD
-          value: password
+          - name: MYSQL_ROOT_PASSWORD
+            value: cloud1688
+          - name: MYSQL_DATABASE
+            value: contacts
         ports:
         - containerPort: 3306
-          name: kafka-thirdparty-mysql
+          name: kafka-mysql
         volumeMounts:
         - name: mysql-data
           mountPath: /var/lib/mysql
