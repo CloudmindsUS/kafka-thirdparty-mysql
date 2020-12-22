@@ -28,7 +28,7 @@ spec:
         - name: mysql-data
           mountPath: /var/lib/mysql
         - name: mysql-conf
-          mountPath: /etc/mysql/mysql.conf.d
+          mountPath: /etc/mysql/conf.d
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
